@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<style>
+  body { font-family: system-ui, Arial, sans-serif; width: 280px; padding: 16px; color: #202124; }
+  h1 { font-size: 15px; margin: 0 0 4px; }
+  .stat { background: #f1f3f4; border-radius: 8px; padding: 10px 12px; margin: 10px 0 14px; font-size: 13px; }
+  .stat b { font-size: 18px; display: block; }
+  label { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; font-size: 13px; cursor: pointer; }
+  button.linklike { background: none; border: none; color: #1a73e8; font-size: 12px; cursor: pointer; padding: 0; text-align: left; }
+  button.linklike:disabled { color: #9aa0a6; cursor: default; }
+  hr { border: none; border-top: 1px solid #e0e0e0; margin: 12px 0; }
+  p.note { font-size: 11px; color: #5f6368; line-height: 1.4; }
+</style>
+</head>
+<body>
+  <h1>🎧 YT Audio Saver</h1>
+  <div class="stat">
+    Estimated data saved
+    <b id="dataSaved">0 MB</b>
+    <button class="linklike" id="resetStats">Reset stats</button>
+  </div>
+  <label>Force lowest video quality <input type="checkbox" id="lowQuality" /></label>
+  <label>Hide video frame (audio-first) <input type="checkbox" id="hideVideo" /></label>
+  <label>Auto-enable on slow network <input type="checkbox" id="autoDetectNetwork" /></label>
+  <hr />
+  <div id="channelLabel" style="font-size:12px;">Current channel: —</div>
+  <button class="linklike" id="whitelistToggle" style="margin-top:6px;" disabled>Always play this channel in full quality</button>
+  <hr />
+  <button class="linklike" id="openOptions">More settings &amp; whitelist</button>
+  <p class="note">Uses YouTube's own quality controls. It does not extract a separate audio stream.</p>
+  <script src="popup.js"></script>
+</body>
+</html>

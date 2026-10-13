@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "YT Audio Saver — Low Data Mode",
+  "version": "2.1.0",
+  "description": "Forces YouTube to the lowest video quality, adapts to your network, shows a mini audio-style player, and estimates data saved.",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "yt-audio-saver@example.local",
+      "strict_min_version": "128.0",
+      "data_collection_permissions": { "required": ["none"] }
+    }
+  },
+  "permissions": ["storage"],
+  "host_permissions": ["*://*.youtube.com/*"],
+  "background": { "scripts": ["background.js"] },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "YT Audio Saver"
+  },
+  "options_ui": { "page": "options.html", "open_in_tab": true },
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["content.js"],
+      "css": ["hide-video.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    { "resources": ["page-bridge.js"], "matches": ["*://*.youtube.com/*"] }
+  ],
+  "commands": {
+    "toggle-hide-video": {
+      "suggested_key": { "default": "Alt+Shift+Y" },
+      "description": "Toggle audio-first (hide video) mode"
+    },
+    "toggle-low-quality": {
+      "suggested_key": { "default": "Alt+Shift+U" },
+      "description": "Toggle forced lowest quality"
+    }
+  }
+}
